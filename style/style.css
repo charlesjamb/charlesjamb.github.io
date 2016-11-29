@@ -1,7 +1,26 @@
+ul {
+  list-style-type: none;
+}
+
+#bio-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#bio-pic {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 #bio-pic img {
 	border-radius: 50%;
 	height: 25vh;
 	width: 25vh;
-	margin-top: 10vh;
-	margin-left: 15vh;
+}
+
+#bio-text {
+	padding-right: 5vh;
 }

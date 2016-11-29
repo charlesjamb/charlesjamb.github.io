@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header class="jumbotron" id="header-container">
-		<div class="row">
+		<div class="row" id="bio-container">
 			<div class="col-sm-12 col-md-3" id="bio-pic">
 				<img src="img/pic.jpeg">
 			</div>
@@ -22,7 +22,7 @@
 				<h1>Charles Jambon</h1>
 				<h2>Web Developer</h2>
 				<p>Full-Stack Web Developer with a passion for learning new technologies, currently tinkering with JavaScript ... </p>
-				<p>I am capable of building responsive, Full- Stack JavaScript based applications. My current tech stack includes: <span class="label label-danger">React</span>, <span class="label label-danger">jQuery</span>, <span class="label label-danger">HTML</span>, and <span class="label label-danger">CSS</span> on the Front-End and <span class="label label-danger">Node.js</span>, <span class="label label-danger">Express</span>, <span class="label label-danger">MySQL</span> on the Back-End.</p>
+				<p>I am capable of building responsive, Full- Stack JavaScript based applications. My current tech stack includes: <span class="label label-info">React</span>, <span class="label label-info">jQuery</span>, <span class="label label-info">HTML</span>, and <span class="label label-info">CSS</span> on the Front-end and <span class="label label-warning">Node.js</span>, <span class="label label-warning">Express</span>, <span class="label label-warning">MySQL</span> on the Back-end.</p>
 				<p>If you are interested in what I could bring to your team, please feel free to contact me at: <span class="label label-success">charles.jambon@gmail.com</span></p>
 			</div>
 		</div>
@@ -32,32 +32,36 @@
 		<div class="row">
 			<h1>Projects</h1>
 		</div>
-		<article class="row">
-			<h2>Foodme</h2>
-			<a href="https://github.com/FoodMe-Project">Github repo</a>
-			<p>Embeded Youtube video</p>
-			<p>Foodme is a webapp that, at its core, proposes recipes based on ingredients you have available. Once you login, you can input and keep track of your “fridge” as well as search and save recipes based on ingredients in your fridge.</p>
-			<ul>
-				<h3>Tech used</h3>
-				<li>Front > React, Bootstrap, Auth0</li>
-				<li>Back > Node.js, Express.js and MySQL</li>
-			</ul>
+		<hr />
+		<article class="row row-centered">	
+			<h2>Foodme <small><a href="https://github.com/FoodMe-Project"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></small></h2>
+			<div div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
+  				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cF3rKkWDIZw" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="well well-lg" id="foodme-text">
+				<p>Foodme is a webapp that, at its core, proposes recipes based on ingredients you have available. Once you login, you can input and keep track of your “fridge” as well as search and save recipes based on ingredients in your fridge.</p>
+				<ul>
+					<li><span class="label label-info">React</span>  <span class="label label-info">Bootstrap</span>  <span class="label label-info">Auth0</span></li>
+					<li><span class="label label-warning">Node.js</span>  <span class="label label-warning">Express.js</span>  <span class="label label-warning">MySQL</span></li>
+				</ul>
+			</div>
 		</article>
 		<article class="row">
-			<h2>Reddit Clone</h2>
-			<a href="https://github.com/charlesjamb/reddit-nodejs-api">Github repo</a>
-			<p>RedditClone is a website copying the main functionalities of reddit.com: login, create a post, subreddits and upvote/downvote.</p>
-			<ul>
-				<h3>Tech used:</h3>
-				<li>Front > Pug, jQuery, Bootstrap</li>
-				<li>Back > Node.js, Express.js and MySQL</li>
-			</ul>
+			<h2>Reddit Clone <small><a href="https://github.com/charlesjamb/reddit-nodejs-api"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></small></h2>
+			<div class="well well-lg">	
+				<p>RedditClone is a website copying the main functionalities of reddit.com: login, create a post, subreddits and upvote/downvote.</p>
+				<ul>
+					<li><span class="label label-info">Pug</span>  <span class="label label-info">jQuery</span>  <span class="label label-info">Bootstrap</span></li>
+					<li><span class="label label-warning">Node.js</span>  <span class="label label-warning">Express.js</span>  <span class="label label-warning">MySQL</span></li>
+				</ul>
+			</div>
 		</article>
 	</section>
 	<section class="container">
 		<div class="row">
 			<h1>Education</h1>
 		</div>
+		<hr />
 		<article class="row">
 			<h2>DecodeMtl</h2>
 			<a href="www.decodemtl.com">Website</a>
@@ -80,6 +84,7 @@
 		<div class="row">
 			<h1>Work Experiences</h1>
 		</div>
+		<hr />
 		<article class="row">
 			<h2>Grana Tribofinition</h2>
 			<p>Sales Representative</p>
@@ -98,6 +103,7 @@
 	<section class="container">
 		<div class="row">
 			<h1>Languages</h1>
+			<hr />
 			<ul>
 				<li>French > Native</li>
 				<li>English > Full Working Proficiency</li>
