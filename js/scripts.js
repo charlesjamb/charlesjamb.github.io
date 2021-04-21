@@ -1,91 +1,74 @@
-(function($) {
-    // Remove no-js class
-    $("html").removeClass("no-js");
+// Remove no-js class
+document.querySelector('html').classList.remove('no-js')
 
-    // Animate to section when nav is clicked
-    $("header a").click(function(e) {
-        e.preventDefault();
-        var heading = $(this).attr("href");
-        var scrollDistance = $(heading).offset().top;
+// Open mobile menu
+document
+  .querySelector('#mobile-menu-open')
+  .addEventListener('click', function () {
+    document.querySelector('header').classList.add('active')
+    document.querySelector('body').classList.add('active')
+  })
 
-        $("html, body").animate(
-            {
-                scrollTop: scrollDistance + "px"
-            },
-            Math.abs(window.pageYOffset - $(heading).offset().top) / 1
-        );
+// Close mobile menu
+document
+  .querySelector('#mobile-menu-close')
+  .addEventListener('click', function () {
+    document.querySelector('header').classList.remove('active')
+    document.querySelector('body').classList.remove('active')
+  })
 
-        // Hide the menu once clicked if mobile
-        if ($("header").hasClass("active")) {
-            $("header, body").removeClass("active");
-        }
-    });
+// Add experiences timeline and dates
+let experiences = document.querySelectorAll('#experience-timeline > div')
+for (let i = 0; i < experiences.length; i++) {
+  let xp = experiences[i]
+  let date = xp.getAttribute('data-date')
+  xp.classList.add('vtimeline-content')
+  let timeline = `<div class="vtimeline-point" id="xp-${i}">
+      <div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>
+      <div class="vtimeline-block">
+        <span class="vtimeline-date">${date}</span>
+      </div>
+    </div>`
 
-    // Scroll to top
-    $("#to-top").click(function() {
-        $("html, body").animate(
-            {
-                scrollTop: 0
-            },
-            500
-        );
-    });
+  xp.insertAdjacentHTML('beforebegin', timeline)
+  document.querySelector(`div#xp-${i} div.vtimeline-block`).appendChild(xp)
+}
 
-    // Scroll to first element
-    $("#lead-down span").click(function() {
-        var scrollDistance = $("#lead")
-            .next()
-            .offset().top;
-        $("html, body").animate(
-            {
-                scrollTop: scrollDistance + "px"
-            },
-            500
-        );
-    });
+// Add scrolls
 
-    // Create timeline
-    $("#experience-timeline").each(function() {
-        $this = $(this); // Store reference to this
-        $userContent = $this.children("div"); // user content
+document.querySelector('#to-top').addEventListener('click', function () {
+  scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  })
+})
 
-        // Create each timeline block
-        $userContent.each(function() {
-            $(this)
-                .addClass("vtimeline-content")
-                .wrap(
-                    '<div class="vtimeline-point"><div class="vtimeline-block"></div></div>'
-                );
-        });
+document.querySelector('#lead').addEventListener('click', function () {
+  let top = document.querySelector('#about').offsetTop
+  scrollTo({
+    top,
+    left: 0,
+    behavior: 'smooth',
+  })
+})
 
-        // Add icons to each block
-        $this.find(".vtimeline-point").each(function() {
-            $(this).prepend(
-                '<div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>'
-            );
-        });
+let menuLinks = document.querySelectorAll('header a')
+for (let j = 0; j < menuLinks.length; j++) {
+  let link = menuLinks[j]
+  let destination = document.querySelector(link.getAttribute('href'))
+  link.addEventListener('click', function (e) {
+    e.preventDefault()
+    scrollTo({
+      top: destination.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    })
 
-        // Add dates to the timeline if exists
-        $this.find(".vtimeline-content").each(function() {
-            var date = $(this).data("date");
-            if (date) {
-                // Prepend if exists
-                $(this)
-                    .parent()
-                    .prepend(
-                        '<span class="vtimeline-date">' + date + "</span>"
-                    );
-            }
-        });
-    });
-
-    // Open mobile menu
-    $("#mobile-menu-open").click(function() {
-        $("header, body").addClass("active");
-    });
-
-    // Close mobile menu
-    $("#mobile-menu-close").click(function() {
-        $("header, body").removeClass("active");
-    });
-})(jQuery);
+    // Hide the menu once clicked if mobile
+    if (document.querySelector('header').classList.contains('active')) {
+      document.querySelector('header').classList.remove('active')
+      document.querySelector('body').classList.remove('active')
+    }
+  })
+}
