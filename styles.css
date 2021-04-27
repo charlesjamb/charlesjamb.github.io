@@ -139,6 +139,7 @@ header.active {
   background: var(--background-color);
   align-items: center;
   justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 #mobile-menu-open svg {
   vertical-align: middle;
@@ -643,7 +644,7 @@ footer {
   #dark-mode {
     position: absolute;
     bottom: 5%;
-    left: calc(50% - 40px);
+    left: calc(50% - 20px);
   }
   #mobile-menu-open,
   #mobile-menu-close {
