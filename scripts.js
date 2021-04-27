@@ -74,6 +74,21 @@ for (let j = 0; j < menuLinks.length; j++) {
   })
 }
 
+// Make skills
+const usedSkills = document.querySelectorAll('li.skill')
+const uniqueUsedSkills = new Set()
+const mainSkillsList = document.querySelector('#skills ul.skills-list')
+for (let i = 0; i < usedSkills.length; i++) {
+  const skill = usedSkills[i].innerText
+  if (!uniqueUsedSkills.has(skill)) {
+    uniqueUsedSkills.add(skill)
+    mainSkillsList.insertAdjacentHTML(
+      'beforeend',
+      `<li class="skill">${skill}</li>`,
+    )
+  }
+}
+
 // Toggle dark mode
 // const btn = document.querySelector('button#dark-mode')
 // const currentTheme = localStorage.getItem('theme')
