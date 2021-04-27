@@ -24,7 +24,9 @@ for (let i = 0; i < experiences.length; i++) {
   let date = xp.getAttribute('data-date')
   xp.classList.add('vtimeline-content')
   let timeline = `<div class="vtimeline-point" id="xp-${i}">
-      <div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>
+      <div class="vtimeline-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zm4.95-7.778a7 7 0 1 0-9.9 0L12 20.9l4.95-4.95zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+      </div>
       <div class="vtimeline-block">
         <span class="vtimeline-date">${date}</span>
       </div>
@@ -35,7 +37,6 @@ for (let i = 0; i < experiences.length; i++) {
 }
 
 // Add scrolls
-
 document.querySelector('#to-top').addEventListener('click', function () {
   scrollTo({
     top: 0,
@@ -44,7 +45,7 @@ document.querySelector('#to-top').addEventListener('click', function () {
   })
 })
 
-document.querySelector('#lead').addEventListener('click', function () {
+document.querySelector('#lead-down').addEventListener('click', function () {
   let top = document.querySelector('#about').offsetTop
   scrollTo({
     top,
@@ -72,3 +73,28 @@ for (let j = 0; j < menuLinks.length; j++) {
     }
   })
 }
+
+// Toggle dark mode
+// const btn = document.querySelector('button#dark-mode')
+// const currentTheme = localStorage.getItem('theme')
+
+// if (
+//   currentTheme === 'dark' ||
+//   (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) // check user browser setting for dark mode
+// ) {
+//   document.body.classList.add('dark-mode')
+// }
+// // Listen for a click on the button
+// btn.addEventListener('click', function () {
+//   document.body.classList.toggle('dark-mode')
+
+//   // Let's say the theme is equal to light
+//   let theme = 'light'
+//   // If the body contains the .dark-theme class...
+//   if (document.body.classList.contains('dark-mode')) {
+//     // ...then let's make the theme dark
+//     theme = 'dark'
+//   }
+//   // Then save the choice in localStorage
+//   localStorage.setItem('theme', theme)
+// })
