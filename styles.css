@@ -35,6 +35,9 @@ p {
 button {
   cursor: pointer;
 }
+.non-dev {
+  opacity: 0.5;
+}
 
 /* No js ---------------------------------------------------------------------- */
 .no-js #experience-timeline > div {
