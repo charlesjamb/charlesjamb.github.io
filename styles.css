@@ -1,8 +1,5 @@
 /* Global --------------------------------------------------------------------- */
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+html {
   --primary-color: #3498db;
   --secondary-color: #246c9c;
   --background-color: #fff;
@@ -10,15 +7,20 @@ body {
   --text-color: #74808a;
   --text-secondary-color: #374054;
   --border-radius-primary: 4px;
-  background-color: var(--background-color);
 }
-body.dark-mode {
+html.dark-mode {
   --primary-color: #ffa7c4;
   --secondary-color: #ff70a0;
   --background-color: #282c35;
   --background-color-alt: #363c48;
   --text-color: hsla(0, 0%, 100%, 0.88);
   --text-secondary-color: #fff;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  background-color: var(--background-color);
 }
 * {
   box-sizing: border-box;
@@ -41,8 +43,12 @@ p {
 button {
   cursor: pointer;
 }
-.non-dev {
-  opacity: 0.5;
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+#lead :focus-visible {
+  outline-color: var(--background-color);
 }
 
 /* No js ---------------------------------------------------------------------- */
@@ -50,7 +56,7 @@ button {
   background: var(--background-color);
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #dcd9d9;
+  border: 1px solid var(--background-color-alt);
 }
 .no-js #experience-timeline > div h3 {
   font-size: 1.5em;
@@ -62,7 +68,7 @@ button {
 .no-js #experience-timeline > div h4 {
   font-size: 1.2em;
   font-weight: 300;
-  color: #7e8890;
+  color: var(--text-color);
   margin: 0 0 15px 0;
 }
 .no-js #experience-timeline > div p {
@@ -139,6 +145,7 @@ header.active {
   background: var(--background-color);
   align-items: center;
   justify-content: center;
+  border: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 #mobile-menu-open svg {
@@ -146,11 +153,12 @@ header.active {
 }
 #mobile-menu-close {
   display: none;
-  text-align: right;
-  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: 10px 15px 0 auto;
   background: var(--background-color);
-  padding-right: 15px;
-  padding-top: 10px;
+  padding: 0;
+  border: none;
   cursor: pointer;
   fill: var(--primary-color);
 }
@@ -279,6 +287,14 @@ header.active {
   bottom: 15px;
   color: var(--background-color);
 }
+#lead-down button {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+}
 #lead-down svg {
   cursor: pointer;
   display: block;
@@ -337,16 +353,7 @@ header.active {
   width: 3px;
   height: 40px;
   background: var(--primary-color);
-  background: -webkit-linear-gradient(
-    top,
-    var(--primary-color),
-    rgba(52, 152, 219, 0)
-  );
-  background: linear-gradient(
-    to bottom,
-    var(--primary-color),
-    rgba(52, 152, 219, 0)
-  );
+  background: linear-gradient(to bottom, var(--primary-color), transparent);
   top: 100%;
   left: 303px;
 }
@@ -367,7 +374,7 @@ header.active {
 .vtimeline-content h4 {
   font-size: 1.2em;
   font-weight: 300;
-  color: #7e8890;
+  color: var(--text-color);
   margin: 0 0 15px 0;
 }
 .vtimeline-content p,
@@ -445,46 +452,6 @@ header.active {
   color: var(--text-color);
   font-size: 0.9em;
 }
-#projects {
-  padding: 50px 15px;
-  text-align: center;
-}
-#projects h2 {
-  color: var(--text-secondary-color);
-  margin-bottom: 50px;
-}
-.project {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  overflow: hidden;
-  background: var(--background-color);
-  border-radius: var(--border-radius-primary);
-  display: flex;
-  align-items: center;
-}
-.project-image {
-  flex-basis: 35%;
-}
-.project-image img {
-  width: 100%;
-  object-fit: contain;
-}
-.project-info {
-  padding: 15px;
-  flex: 1;
-}
-.project-info h3 {
-  font-size: 1.5em;
-  font-weight: 300;
-  color: var(--text-secondary-color);
-  margin: 0 0 15px 0;
-}
-.project-info p {
-  color: var(--text-color);
-  margin: 0 0 15px 0;
-  font-size: 0.9em;
-}
 #skills {
   padding: 50px 15px;
   background: var(--primary-color);
@@ -521,6 +488,37 @@ header.active {
 }
 #skills .skill {
   font-size: 1.2rem;
+}
+#contact {
+  padding: 50px 15px;
+  text-align: center;
+}
+#contact h2 {
+  color: var(--text-secondary-color);
+}
+#contact p {
+  color: var(--text-color);
+  margin: 0 0 20px 0;
+}
+#contact ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#contact a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+}
+#contact a:hover {
+  color: var(--background-color);
+  background: var(--primary-color);
 }
 footer {
   background: var(--background-color);
@@ -572,6 +570,7 @@ footer {
     animation: none;
     bottom: 0;
     height: 100%;
+    background: var(--background-color);
   }
   #dark-mode {
     position: absolute;
@@ -609,9 +608,6 @@ footer {
   .education-block span {
     float: none;
   }
-  .project {
-    flex-direction: column;
-  }
 }
 @media only screen and (max-width: 480px) {
   #lead-content h1 {
@@ -632,7 +628,14 @@ footer {
   margin: 15px auto 0 auto;
   width: 30px;
   height: 30px;
+  padding: 0;
+  background: none;
+  border: none;
   border-radius: 50%;
+}
+#to-top svg {
+  display: block;
+  margin: auto;
 }
 #to-top:hover {
   opacity: 0.8;

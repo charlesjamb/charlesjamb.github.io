@@ -13,38 +13,59 @@
       rel="stylesheet"
     />
     <link href="styles.css" rel="stylesheet" />
+    <script>
+      // Apply the theme before first paint to avoid a flash of the light theme
+      const savedTheme = localStorage.getItem('theme')
+      if (
+        savedTheme === 'dark' ||
+        (!savedTheme &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark-mode')
+      }
+    </script>
     <script src="scripts.js" defer></script>
   </head>
 
   <body>
-    <div id="mobile-menu-open">
+    <button
+      type="button"
+      id="mobile-menu-open"
+      aria-label="Open menu"
+      aria-controls="menu"
+      aria-expanded="false"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         width="24"
         height="24"
+        aria-hidden="true"
       >
         <path fill="none" d="M0 0h24v24H0z" />
         <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" />
       </svg>
-    </div>
-    <!-- End #mobile-menu-toggle -->
+    </button>
+    <!-- End #mobile-menu-open -->
     <header>
-      <div id="mobile-menu-close">
+      <button type="button" id="mobile-menu-close" aria-label="Close menu">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
           height="24"
+          aria-hidden="true"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
             d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
           />
         </svg>
-      </div>
+      </button>
       <ul id="menu">
-        <button id="dark-mode"></button>
+        <li>
+          <button type="button" id="dark-mode"></button>
+        </li>
         <li>
           <a href="#about">About</a>
         </li>
@@ -53,9 +74,6 @@
         </li>
         <li>
           <a href="#education">Education</a>
-        </li>
-        <li>
-          <a href="#projects">Projects</a>
         </li>
         <li>
           <a href="#skills">Skills</a>
@@ -71,12 +89,7 @@
       <div id="lead-content">
         <h1>Charles Jambon</h1>
         <h2>Front-end Developer</h2>
-        <a
-          href="mailto:charles.jambon@gmail.com"
-          target="_blank"
-          rel="noreferrer"
-          class="btn-rounded-white"
-        >
+        <a href="mailto:charles.jambon@gmail.com" class="btn-rounded-white">
           Contact me
         </a>
       </div>
@@ -85,17 +98,20 @@
       <div id="lead-overlay"></div>
 
       <div id="lead-down">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-        >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"
-          />
-        </svg>
+        <button type="button" aria-label="Scroll to About section">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"
+            />
+          </svg>
+        </button>
       </div>
       <!-- End #lead-down -->
     </div>
@@ -131,9 +147,9 @@
             </ul>
           <ul class="skills-list">
             <li class="skill">React</li>
-            <li class="skill">React testing library</li>
-            <li class="skill">Typescript</li>
-            <li class="skill">Github actions</li>
+            <li class="skill">React Testing Library</li>
+            <li class="skill">TypeScript</li>
+            <li class="skill">GitHub Actions</li>
           </ul>
         </div>
 
@@ -199,11 +215,11 @@
             </ul>
         </div>
 
-        <div data-date="September 2015 - September 2016" class="non-dev">
+        <div data-date="September 2015 - September 2016">
           <h3>Grana Tribofinition</h3>
           <h4>Sales Representative</h4>
           <p>
-            Hired to re-enforce the sales team, I was in charge of developing
+            Hired to reinforce the sales team, I was in charge of developing
             the sales and marketing strategy. My daily tasks consisted of
             telesales, face-to-face sales, offer follow up, tracking our
             clients’ satisfaction rate, updating and creating content for our
@@ -212,12 +228,12 @@
           </p>
         </div>
 
-        <div data-date="May 2014 - August 2014" class="non-dev">
+        <div data-date="May 2014 - August 2014">
           <h3>Amkor Technology</h3>
           <h4>Marketing Internship</h4>
           <p>
             In the Sales and Marketing department, I was tasked with identifying
-            new growing semiconductors sectors and analyzing their potential
+            new, growing semiconductor sectors and analyzing their potential
             regarding sales for Amkor. I also wrote white papers, especially on
             small cells and wearable devices, to support Amkor business
             development.
@@ -242,7 +258,7 @@
           <li class="skill">HTML</li>
           <li class="skill">CSS</li>
           <li class="skill">React</li>
-          <li class="skill">Javascript</li>
+          <li class="skill">JavaScript</li>
           <li class="skill">Node.js</li>
           <li class="skill">Express</li>
           <li class="skill">PostgreSQL</li>
@@ -251,20 +267,20 @@
       </div>
       <!-- End .education-block -->
 
-      <div class="education-block non-dev">
+      <div class="education-block">
         <h3>Université Savoie Mont-Blanc</h3>
         <span class="education-date">Sept 2015 - Sept 2016</span>
         <h4>Professional Bachelor in Commercial Relationship Management</h4>
         <p>
           Professional Bachelor in Commercial Relationship Management, General
-          Sales, Merchandising and Related Marketing Operations. Studying in
-          "Alternance" on a rythm of 3 weeks at GRANA as a commercial followed
-          by 2 weeks of schools at the Annecy until end of September 2016.
+          Sales, Merchandising and Related Marketing Operations. Work-study
+          program ("alternance"), alternating 3 weeks at GRANA as a sales
+          representative and 2 weeks of classes in Annecy.
         </p>
       </div>
       <!-- End .education-block -->
 
-      <div class="education-block non-dev">
+      <div class="education-block">
         <h3>McGill University</h3>
         <span class="education-date">Sept 2011 - April 2015</span>
         <h4></h4>
@@ -278,172 +294,55 @@
     </div>
     <!-- End #education -->
 
-    <div id="projects" class="background-alt">
-      <h2 class="heading">Projects</h2>
-      <div>
-        <div class="project">
-          <div class="project-image">
-            <img
-              alt="mathildeetcharles-project-image"
-              src="images/mathildeetcharles.jpg"
-            />
-          </div>
-          <div class="project-info">
-            <h3>Travel blog</h3>
-            <p>
-              My travel blog for the E4 thru-hike. The challenge is that I need
-              to be able to create new post from a phone. That is why I went
-              with Wordpress, their mobile interface is decent and quite easy
-              for everyone to create posts with.
-            </p>
-            <a
-              href="https://mathildeetcharles.online/"
-              target="_blank"
-              rel="noreferrer"
-              >mathildeetcharles.online</a
-            >
-            <ul class="skills-list">
-              <li class="skill">Wordpress</li>
-            </ul>
-          </div>
-        </div>
-        <div class="project">
-          <div class="project-image">
-            <img alt="cluny-project-image" src="images/cluny.jpg" />
-          </div>
-          <div class="project-info">
-            <h3>Cluny Street Brewering Company</h3>
-            <p>
-              Project that displays temperatures from a fridge controlled
-              remotly with a raspberry pie. We use that fridge as an icubator
-              for the beer we brew. Made with create-react-app.
-            </p>
-            <a
-              href="https://clunystreetbreweringcompany.com/"
-              target="_blank"
-              rel="noreferrer"
-              >clunystreetbreweringcompany.com</a
-            >
-            <ul class="skills-list">
-              <li class="skill">React</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-image">
-            <img alt="pauvrebiche-project-image" src="images/pauvrebiche.jpg" />
-          </div>
-          <div class="project-info">
-            <h3>Pauvre Biche</h3>
-            <p>
-              Pauvre Biche is a rap duo from Paris. I made their first website
-              using Gatsbyjs and styled-components.
-            </p>
-            <a
-              href="https://quirky-liskov-dff351.netlify.app/"
-              target="_blank"
-              rel="noreferrer"
-              >View website</a
-            >
-            <br />
-            <a
-              href="https://github.com/charlesjamb/pauvre-biche"
-              target="_blank"
-              rel="noreferrer"
-              >View repo</a
-            >
-            <ul class="skills-list">
-              <li class="skill">Gatsby</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-image">
-            <img alt="foodme-project-image" src="images/foodme.jpg" />
-          </div>
-          <div class="project-info">
-            <h3>FoodMe</h3>
-            <p>
-              Foodme is a webapp that, at its core, proposes recipes based on
-              ingredients you have available. Once you login, you can input and
-              keep track of your “fridge” as well as search and save recipes
-              based on ingredients in your fridge. This project allowed me to
-              get familiar with the git workflow and sharing a code base with
-              members of my team. My main role was to build the back-end and
-              incorporate it in the front-end, as well as using Auth0 for user
-              authentication.
-            </p>
-            <a
-              href="https://github.com/FoodMe-Project"
-              target="_blank"
-              rel="noreferrer"
-              >View repos</a
-            >
-            <ul class="skills-list">
-              <li class="skill">React</li>
-              <li class="skill">Node.js</li>
-              <li class="skill">Express</li>
-              <li class="skill">PostgreSQL</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-image">
-            <img
-              alt="reddit-clone-project-image"
-              src="images/reddit-clone.jpg"
-            />
-          </div>
-          <div class="project-info">
-            <h3>Reddit Clone</h3>
-            <p>
-              RedditClone is a website copying the main functionalities of
-              reddit.com: login, create a post, subreddits and upvote/downvote.
-              With this project I learned how to build and use a database but
-              also how to build a user authentication from scratch.
-            </p>
-            <a
-              href="https://github.com/charlesjamb/reddit-clone"
-              target="_blank"
-              rel="noreferrer"
-              >View repo</a
-            >
-            <ul class="skills-list">
-              <li class="skill">HTML</li>
-              <li class="skill">CSS</li>
-              <li class="skill">Node.js</li>
-              <li class="skill">Express</li>
-              <li class="skill">PostgreSQL</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End #projects -->
-
     <div id="skills">
       <h2 class="heading">Skills</h2>
       <ul class="skills-list"></ul>
     </div>
     <!-- End #skills -->
 
+    <div id="contact" class="background-alt">
+      <h2 class="heading">Contact</h2>
+      <p>Feel free to reach out, I'm always happy to chat!</p>
+      <ul>
+        <li>
+          <a href="mailto:charles.jambon@gmail.com">charles.jambon@gmail.com</a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/charlesjambon/"
+            target="_blank"
+            rel="noreferrer"
+            >LinkedIn</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/charlesjamb"
+            target="_blank"
+            rel="noreferrer"
+            >GitHub</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- End #contact -->
+
     <footer>
       <div class="top">
-        <svg
-          id="to-top"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-        >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            d="M12 10.828l-4.95 4.95-1.414-1.414L12 8l6.364 6.364-1.414 1.414z"
-          />
-        </svg>
+        <button type="button" id="to-top" aria-label="Back to top">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M12 10.828l-4.95 4.95-1.414-1.414L12 8l6.364 6.364-1.414 1.414z"
+            />
+          </svg>
+        </button>
       </div>
       <div class="social">
         <ul>
@@ -452,12 +351,14 @@
               href="https://github.com/charlesjamb"
               target="_blank"
               rel="noreferrer"
+              aria-label="GitHub"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
+                aria-hidden="true"
               >
                 <path fill="none" d="M0 0h24v24H0z" />
                 <path
@@ -471,12 +372,14 @@
               href="https://www.linkedin.com/in/charlesjambon/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
+                aria-hidden="true"
               >
                 <path fill="none" d="M0 0h24v24H0z" />
                 <path
