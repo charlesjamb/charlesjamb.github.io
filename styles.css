@@ -122,6 +122,9 @@ header.active {
 }
 #dark-mode {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
   left: -45px;
   background: transparent;
   padding: 8px;
@@ -574,6 +577,8 @@ footer {
   }
   #dark-mode {
     position: absolute;
+    top: auto;
+    transform: none;
     bottom: 5%;
     left: calc(50% - 20px);
   }
